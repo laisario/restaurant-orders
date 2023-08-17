@@ -29,12 +29,9 @@ class MenuBuilder:
         menu = []
         inventory = InventoryMapping()
         for dish in list(self.menu_data.dishes):
-            print(
-                inventory.check_recipe_availability(dish.recipe), dish.recipe
-            )
             if (
                 restriction not in dish.get_restrictions()
-                and inventory.check_recipe_availability(dish.recipe)
+                and self.inventory.check_recipe_availability(dish.recipe)
             ):
                 menu.append(
                     {
@@ -45,6 +42,4 @@ class MenuBuilder:
                     }
                 )
                 inventory.consume_recipe(dish.recipe)
-            else:
-                menu.clear()
         return menu
