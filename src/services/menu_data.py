@@ -33,8 +33,8 @@ class MenuData:
             dish = self.find_dish_by_name(line[0])
             ingredient = Ingredient(line[2])
             if dish:
-                dish.add_ingredient_dependency(ingredient, float(line[3]))
+                dish.add_ingredient_dependency(ingredient, int(line[3]))
             else:
                 dish = Dish(line[0], float(line[1]))
-                dish.add_ingredient_dependency(ingredient, float(line[3]))
+                dish.add_ingredient_dependency(ingredient, int(line[3]))
                 self.dishes.add(dish)
